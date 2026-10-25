@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="hyper_bg">#F5F6F8</color>
+    <color name="hyper_card_bg">#FFFFFF</color>
+    <color name="hyper_header_bg">#EBF1FE</color>
+    <color name="hyper_text_primary">#16181C</color>
+    <color name="hyper_text_secondary">#8B9099</color>
+    <color name="hyper_accent">#3482FF</color>
+    <color name="hyper_divider">#EDEEF1</color>
+    <color name="hyper_btn_primary_bg">#16181C</color>
+    <color name="hyper_btn_primary_text">#FFFFFF</color>
+    <color name="hyper_icon_bg">#EFF1F5</color>
+    <color name="hyper_desc_text">#505763</color>
+    <color name="hyper_menu_bg">#FFFFFF</color>
+    <color name="hyper_success">#34C759</color>
+    <color name="hyper_warning">#FF9500</color>
+    <color name="hyper_intro_btn_bg">#3482FF</color>
+
+    <!-- 管理页专用中性色 -->
+    <color name="hyper_segment_track">#E9EBEF</color>
+    <color name="hyper_segment_thumb">#FFFFFF</color>
+    <color name="hyper_switch_off">#D5D8DE</color>
+    <color name="hyper_press">#0A000000</color>
+    <color name="hyper_undo_action">#8DB8FF</color>
+
+    <!-- 胶囊动作按键 -->
+    <color name="hyper_pill_blue_bg">#EBF2FF</color>
+    <color name="hyper_pill_blue_text">#246BE5</color>
+    <color name="hyper_pill_grey_bg">#EEF0F4</color>
+    <color name="hyper_pill_grey_text">#59606D</color>
+</resources>

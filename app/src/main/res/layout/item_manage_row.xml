@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="3dp"
+    android:background="@drawable/bg_card_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/bg_item_ripple"
+    android:gravity="center_vertical"
+    android:minHeight="62dp"
+    android:orientation="horizontal"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="10dp">
+
+    <ImageView
+        android:id="@+id/ivAppIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@null"
+        tools:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvAppLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/hyper_text_primary"
+            android:textSize="15.5sp"
+            tools:text="百度翻译" />
+
+        <TextView
+            android:id="@+id/tvPackageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="middle"
+            android:fontFamily="monospace"
+            android:singleLine="true"
+            android:textColor="@color/hyper_text_secondary"
+            android:textSize="11sp"
+            tools:text="com.baidu.baidutranslate" />
+    </LinearLayout>
+
+    <!-- 取消置顶胶囊（置顶固定项目） -->
+    <TextView
+        android:id="@+id/btnUnpin"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/bg_btn_pill_neutral"
+        android:gravity="center"
+        android:paddingHorizontal="9dp"
+        android:text="取消"
+        android:textColor="@color/hyper_pill_grey_text"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <!-- 拖动手柄（显示列表） -->
+    <ImageView
+        android:id="@+id/ivDragHandle"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="拖动排序"
+        android:padding="8dp"
+        android:src="@drawable/ic_drag_handle"
+        app:tint="@color/hyper_text_secondary" />
+
+    <!-- 置顶胶囊按钮（常规显示列表） -->
+    <TextView
+        android:id="@+id/btnPin"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:background="@drawable/bg_btn_pill_primary"
+        android:gravity="center"
+        android:paddingHorizontal="11dp"
+        android:text="置顶"
+        android:textColor="@color/hyper_pill_blue_text"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <!-- 恢复按钮（收纳隐藏项目） -->
+    <ImageView
+        android:id="@+id/btnRestore"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="恢复显示"
+        android:padding="6dp"
+        android:src="@drawable/ic_add"
+        app:tint="@color/hyper_accent"
+        android:visibility="gone" />
+
+    <!-- 搜索模式动作胶囊：置顶 / 收纳 / 恢复 -->
+    <LinearLayout
+        android:id="@+id/layoutSearchActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/btnSearchPin"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_btn_pill_primary"
+            android:gravity="center"
+            android:paddingHorizontal="11dp"
+            android:text="置顶"
+            android:textColor="@color/hyper_pill_blue_text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnSearchHide"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_btn_pill_neutral"
+            android:gravity="center"
+            android:paddingHorizontal="11dp"
+            android:text="收纳"
+            android:textColor="@color/hyper_pill_grey_text"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnSearchRestore"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_btn_pill_primary"
+            android:gravity="center"
+            android:paddingHorizontal="11dp"
+            android:text="恢复"
+            android:textColor="@color/hyper_pill_blue_text"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>
