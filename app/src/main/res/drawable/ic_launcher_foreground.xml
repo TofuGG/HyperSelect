@@ -9,8 +9,8 @@
     <group
         android:pivotX="54"
         android:pivotY="54"
-        android:scaleX="0.75"
-        android:scaleY="0.75">
+        android:scaleX="0.72"
+        android:scaleY="0.72">
 
         <!-- Top capsule: sky blue to HyperOS blue -->
         <path android:pathData="M32,34 L76,34 A8,8 0 0,1 76,50 L32,50 A8,8 0 0,1 32,34 Z">
