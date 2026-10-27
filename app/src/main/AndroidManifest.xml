@@ -28,11 +28,17 @@
 
     <application
         android:allowBackup="true"
+        android:description="@string/xposed_description"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HyperSelect">
+
+        <!-- Xposed Module Description for LSPosed / EDXposed -->
+        <meta-data
+            android:name="xposeddescription"
+            android:resource="@string/xposed_description" />
 
         <activity
             android:name=".MainActivity"
