@@ -69,6 +69,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (LocaleHelper.getLanguage(this) != resources.configuration.locales[0].language) {
+            recreate()
+            return
+        }
         updateStatusAndCounts()
     }
 
