@@ -39,11 +39,11 @@ class SettingsActivity : AppCompatActivity() {
             runCatching {
                 contentResolver.openOutputStream(uri)?.use { out ->
                     out.write(RuleStore.load(this).toJson().toByteArray(Charsets.UTF_8))
-                } ?: error("cannot open file")
+                } ?: error(getString(R.string.cannot_open_file))
             }.onSuccess {
                 toast(getString(R.string.export_success))
             }.onFailure {
-                toast(getString(R.string.export_failed, it.message ?: "unknown"))
+                toast(getString(R.string.export_failed, it.message ?: getString(R.string.unknown_error)))
             }
         }
 
@@ -186,7 +186,7 @@ class SettingsActivity : AppCompatActivity() {
                         toast(getString(R.string.update_latest))
                     }
                 }.onFailure {
-                    toast(getString(R.string.update_failed, it.message ?: "unknown"))
+                    toast(getString(R.string.update_failed, it.message ?: getString(R.string.unknown_error)))
                 }
             }
         }.start()
@@ -205,8 +205,8 @@ class SettingsActivity : AppCompatActivity() {
             val obj = JSONObject(body)
             val tag = obj.optString("tag_name").trim()
             val url = obj.optString("html_url").trim()
-            if (tag.isEmpty() || url.isEmpty()) error("empty response")
-            if (!url.startsWith("https://")) error("invalid url")
+            if (tag.isEmpty() || url.isEmpty()) error(getString(R.string.empty_response))
+            if (!url.startsWith("https://")) error(getString(R.string.invalid_update_url))
             return Pair(tag, url)
         } finally {
             conn.disconnect()
