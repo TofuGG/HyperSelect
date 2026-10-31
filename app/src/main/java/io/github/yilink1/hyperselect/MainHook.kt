@@ -417,9 +417,9 @@ class MainHook : XposedModule() {
                 else -> emptyList()
             }
 
-            val queryMsg = "Resolver query: action=$action, items=${originalList.size}, blacklist=${blacklist.size}, order=${customorder.size}"
-            Log.i(TAG, queryMsg)
-            if (DEBUG) log(Log.INFO, TAG, queryMsg)
+            if (DEBUG) {
+                log(Log.INFO, TAG, "Resolver query: action=$action, items=${originalList.size}, blacklist=${blacklist.size}, order=${customorder.size}")
+            }
 
             if (blacklist.isEmpty() && customorder.isEmpty()) return rawSlice
 
@@ -434,10 +434,8 @@ class MainHook : XposedModule() {
                 originalList
             }
 
-            if (blacklist.isNotEmpty()) {
-                val filteredMsg = "Resolver filtered: before=${originalList.size}, after=${filtered.size}"
-                Log.i(TAG, filteredMsg)
-                if (DEBUG) log(Log.INFO, TAG, filteredMsg)
+            if (blacklist.isNotEmpty() && DEBUG) {
+                log(Log.INFO, TAG, "Resolver filtered: before=${originalList.size}, after=${filtered.size}")
             }
 
             val resultList = if (customorder.isNotEmpty()) {
@@ -687,8 +685,8 @@ class MainHook : XposedModule() {
                 val pkg = pair?.second ?: ""
                 blacklist.contains(comp) || blacklist.contains(pkg)
             }
-            if (targets.size != beforeCount) {
-                Log.i(TAG, "IntentResolver blacklist filtered [$sourceTag]: before=$beforeCount, after=${targets.size}")
+            if (targets.size != beforeCount && DEBUG) {
+                log(Log.INFO, TAG, "IntentResolver blacklist filtered [$sourceTag]: before=$beforeCount, after=${targets.size}")
             }
         }
 
@@ -713,9 +711,7 @@ class MainHook : XposedModule() {
             }
 
             targets.sortWith(compareBy { rankMap[it] ?: Int.MAX_VALUE })
-            val top3 = targets.take(3).mapNotNull { extractTargetInfo(it)?.first }
-            Log.i(TAG, "IntentResolver sort applied [$sourceTag]: action=$actionHint, customorderSize=${customorder.size}, targetsCount=${targets.size}, top3=$top3")
-            if (DEBUG) log(Log.INFO, TAG, "IntentResolver sort applied [$sourceTag]: action=$actionHint, targetsCount=${targets.size}")
+            if (DEBUG) log(Log.INFO, TAG, "IntentResolver sort applied [$sourceTag]: action=$actionHint, targets=${targets.size}")
         }
     }
 
