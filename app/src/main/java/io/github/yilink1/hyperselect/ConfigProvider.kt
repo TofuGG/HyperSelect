@@ -2,6 +2,7 @@ package io.github.yilink1.hyperselect
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.os.Binder
@@ -15,18 +16,21 @@ class ConfigProvider : ContentProvider() {
         val CONTENT_URI: Uri = Uri.parse("content://$AUTHORITY/rules")
 
         const val METHOD_GET_RULES = "getRules"
-        const val METHOD_NOTIFY_CHANGED = "notifyChanged"
         const val EXTRA_RULES_JSON = "rules_json"
+
+        private const val INTENT_RESOLVER_PACKAGE = "com.android.intentresolver"
     }
 
     override fun onCreate(): Boolean = true
 
     override fun call(method: String, arg: String?, extras: Bundle?): Bundle? {
         val ctx = context ?: return null
+        val callingUid = Binder.getCallingUid()
+        if (!isTrustedCaller(ctx, callingUid)) return null
         return when (method) {
             METHOD_GET_RULES -> {
                 // Only log reads from system_server as proof the module is active this boot
-                if (Binder.getCallingUid() == Process.SYSTEM_UID) {
+                if (callingUid == Process.SYSTEM_UID) {
                     RuleStore.saveSystemReadReceipt(ctx)
                 }
                 val config = RuleStore.load(ctx)
@@ -34,12 +38,17 @@ class ConfigProvider : ContentProvider() {
                     putString(EXTRA_RULES_JSON, config.toJson())
                 }
             }
-            METHOD_NOTIFY_CHANGED -> {
-                ctx.contentResolver.notifyChange(CONTENT_URI, null)
-                Bundle().apply { putBoolean("result", true) }
-            }
             else -> super.call(method, arg, extras)
         }
+    }
+
+    private fun isTrustedCaller(ctx: Context, uid: Int): Boolean {
+        if (uid == Process.SYSTEM_UID || uid == Process.myUid()) return true
+        return runCatching {
+            ctx.packageManager.getPackagesForUid(uid)?.any {
+                it == ctx.packageName || it == INTENT_RESOLVER_PACKAGE
+            } == true
+        }.getOrDefault(false)
     }
 
     override fun query(
