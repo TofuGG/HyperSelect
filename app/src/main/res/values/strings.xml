@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">HyperSelect</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="more_options">More</string>
+    <string name="back">Back</string>
+    <string name="search">Search</string>
+    <string name="close_search">Close search</string>
+    <string name="search_hint">Search app name or package</string>
+    <string name="drag_sort">Drag to reorder</string>
+    <string name="restore_display">Restore item</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="cannot_open_file">Cannot open file</string>
+    <string name="empty_response">Empty response</string>
+    <string name="invalid_update_url">Invalid update URL</string>
     <string name="xposed_description">Remove HyperOS AI Writing bubble and freely manage/purify text selection, share, and Open with menus</string>
     <string name="module_info">Module Info</string>
     <string name="scope">Scope</string>
@@ -13,7 +25,7 @@
     <string name="author">Author</string>
     <string name="language">Language</string>
     <string name="translated_by">Translated by TofuGG</string>
-        <string name="title_text_selection">Text Selection</string>
+    <string name="title_text_selection">Text Selection</string>
     <string name="main_card_text_menu">Long press text menu</string>
     <string name="title_system_share">System Share</string>
     <string name="main_card_share_panel">Share panel app list</string>

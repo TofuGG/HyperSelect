@@ -55,22 +55,22 @@
         <activity
             android:name=".TextActionActivity"
             android:exported="false"
-            android:label="Text Selection" />
+            android:label="@string/title_text_selection" />
 
         <activity
             android:name=".ShareActionActivity"
             android:exported="false"
-            android:label="System Share" />
+            android:label="@string/title_system_share" />
 
         <activity
             android:name=".OpenWithActionActivity"
             android:exported="false"
-            android:label="Open With" />
+            android:label="@string/title_open_with" />
 
         <activity
             android:name=".AboutActivity"
             android:exported="false"
-            android:label="About" />
+            android:label="@string/about_title" />
 
         <activity
             android:name=".SettingsActivity"
@@ -80,7 +80,7 @@
         <activity
             android:name=".IntroActivity"
             android:exported="false"
-            android:label="Welcome" />
+            android:label="@string/welcome_title" />
 
         <provider
             android:name=".ConfigProvider"
