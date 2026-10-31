@@ -51,7 +51,7 @@ class AboutActivity : AppCompatActivity() {
             }
             tvVersion.text = "v${pInfo.versionName} ($code)"
         } catch (_: Exception) {
-            tvVersion.text = "v1.0.0"
+            tvVersion.visibility = View.GONE
         }
 
         val tvLanguage: TextView = findViewById(R.id.tvAboutLanguage)
